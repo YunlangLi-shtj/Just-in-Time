@@ -1,6 +1,6 @@
 __pycache__/
+models/
 outputs*/
 *.mp4
 *.log
 *.mat
-

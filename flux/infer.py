@@ -19,6 +19,12 @@ def parse_args():
         default=0,
         help="CUDA device id used for inference",
     )
+    parser.add_argument(
+        "--model_path",
+        type=str,
+        default="./models/FLUX.1-dev",
+        help="Local diffusers checkpoint directory",
+    )
     return parser.parse_args()
 
 def main():
@@ -30,7 +36,7 @@ def main():
     generator = torch.Generator(device).manual_seed(seed)
 
     # Load pipeline
-    model_path = "black-forest-labs/FLUX.1-dev" # Replace this with your local path if you are loading the model offline
+    model_path = args.model_path
     pipeline = FluxPipeline_JiT.from_pretrained(model_path, torch_dtype=torch.float16)
     pipeline = pipeline.to(device)
 
