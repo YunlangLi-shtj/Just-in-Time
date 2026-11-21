@@ -54,6 +54,18 @@ REPOS = {
             "vae/",
         ),
     },
+    "flux2_4b": {
+        "repo_id": "black-forest-labs/FLUX.2-klein-base-4B",
+        "target": "FLUX.2-klein-base-4B",
+        "prefixes": (
+            "model_index.json",
+            "scheduler/",
+            "text_encoder/",
+            "tokenizer/",
+            "transformer/",
+            "vae/",
+        ),
+    },
 }
 
 _print_lock = threading.Lock()
@@ -211,9 +223,9 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument(
         "--model",
-        choices=("flux1", "flux2", "both"),
+        choices=("flux1", "flux2", "flux2_4b", "both", "all"),
         default="both",
-        help="which checkpoint(s) to download",
+        help="which checkpoint(s) to download; 'both' = flux1 + flux2, 'all' = all three",
     )
     parser.add_argument(
         "--dest", default=DEFAULT_DEST, help=f"destination root (default: {DEFAULT_DEST})"
@@ -221,7 +233,12 @@ def main():
     parser.add_argument("--workers", type=int, default=8, help="parallel downloads")
     args = parser.parse_args()
 
-    keys = ("flux1", "flux2") if args.model == "both" else (args.model,)
+    if args.model == "both":
+        keys = ("flux1", "flux2")
+    elif args.model == "all":
+        keys = ("flux1", "flux2", "flux2_4b")
+    else:
+        keys = (args.model,)
     os.makedirs(args.dest, exist_ok=True)
     for key in keys:
         download_model(key, args.dest, args.workers)

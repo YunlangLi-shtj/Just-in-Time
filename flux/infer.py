@@ -25,6 +25,11 @@ def parse_args():
         default="./models/FLUX.1-dev",
         help="Local diffusers checkpoint directory",
     )
+    parser.add_argument(
+        "--offload",
+        action="store_true",
+        help="Use model-level CPU offload instead of moving the whole pipeline to GPU",
+    )
     return parser.parse_args()
 
 def main():
@@ -38,7 +43,10 @@ def main():
     # Load pipeline
     model_path = args.model_path
     pipeline = FluxPipeline_JiT.from_pretrained(model_path, torch_dtype=torch.float16)
-    pipeline = pipeline.to(device)
+    if args.offload:
+        pipeline.enable_model_cpu_offload(gpu_id=args.gpu_id)
+    else:
+        pipeline = pipeline.to(device)
 
     # Use preset (default_4x or default_7x) or custom parameters
     pipeline.set_params(preset=args.preset)

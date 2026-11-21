@@ -1,13 +1,9 @@
 # Just-in-Time: Training-Free Spatial Acceleration for Diffusion Transformers (CVPR 2026)
 
-
-
 ![arXiv](https://img.shields.io/badge/arXiv-2603.10744-B31B1B.svg)
 ![Project](https://img.shields.io/badge/Project-Page-1F6FEB.svg)
 ![License](https://img.shields.io/badge/License-Apache_2.0-6E7781.svg)
 ![GitHub Repo stars](https://img.shields.io/github/stars/Wenhao-Sun77/Just-in-Time?style=plastic&logo=github)
-
-
 
 |                                                                                                                                         |                                                                                                                                                               |
 | --------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -70,8 +66,8 @@ You can select the CUDA device from the command line through `--gpu_id`.
 Run the FLUX.1-dev demo with a predefined JiT preset:
 
 ```bash
-python flux/infer.py --preset default_4x --gpu_id 0
-python flux/infer.py --preset default_7x --gpu_id 0
+python flux/infer.py --preset default_4x --gpu_id 0 --offload
+python flux/infer.py --preset default_7x --gpu_id 0 --offload
 ```
 
 The script will:
@@ -85,8 +81,8 @@ The script will:
 Run the FLUX.2-klein-base-9B demo with a predefined JiT preset:
 
 ```bash
-python flux2-klein-base-9B/infer_flux2.py --preset default_4x --gpu_id 0
-python flux2-klein-base-9B/infer_flux2.py --preset default_7x --gpu_id 0
+python flux2-klein-base-9B/infer_flux2.py --preset default_4x --gpu_id 0 --offload
+python flux2-klein-base-9B/infer_flux2.py --preset default_7x --gpu_id 0 --offload
 ```
 
 The script will:
