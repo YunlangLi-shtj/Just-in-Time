@@ -66,7 +66,7 @@ You can select the CUDA device from the command line through `--gpu_id`.
 Run the FLUX.1-dev demo with a predefined JiT preset:
 
 ```bash
-python flux/infer.py --preset default_4x --gpu_id 0 --offload
+python flux/infer.py --preset default_4x --gpu_id 7 --offload
 python flux/infer.py --preset default_7x --gpu_id 0 --offload
 ```
 

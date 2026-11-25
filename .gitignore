@@ -1,5 +1,7 @@
 __pycache__/
 models/
+docs/
+paper/
 outputs*/
 *.mp4
 *.log

@@ -69,7 +69,8 @@ def main():
     # Configuration
     resolution = 1024
     # Prompt
-    prompt = "A grand piano made entirely of transparent, crystal-clear ice, with delicate frost patterns on its surface. It sits in a warm, sunlit concert hall, slowly melting, with water dripping onto the polished wooden floor. Photorealistic, poignant."
+    # prompt = "A grand piano made entirely of transparent, crystal-clear ice, with delicate frost patterns on its surface. It sits in a warm, sunlit concert hall, slowly melting, with water dripping onto the polished wooden floor. Photorealistic, poignant."
+    prompt = "a cute cat sitting on a chair, eating noodles, looking at the camera, the background is snowing"
 
     # Generate image
     print(f"Generating: {prompt}")
@@ -87,7 +88,7 @@ def main():
     print(f"Cost: {elapsed:.3f}s") 
 
     # Save output
-    output_dir = "./outputs/"
+    output_dir = "./outputs_flux1/"
     os.makedirs(output_dir, exist_ok=True)
     output_path = os.path.join(output_dir, f"{prompt[:50]}.png")
     image.save(output_path)

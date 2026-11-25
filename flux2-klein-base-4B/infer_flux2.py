@@ -63,7 +63,8 @@ def main():
     """
     
     resolution = 1024
-    prompt = "A futuristic CPU chip with the text 'JiT' laser-etched on the center, intricate circuits, macro shot."
+    # prompt = "A futuristic CPU chip with the text 'JiT' laser-etched on the center, intricate circuits, macro shot."
+    prompt = "a cute cat sitting on a chair, eating noodles, looking at the camera, the background is snowing"
 
     # Generate image
     print(f"Generating: {prompt}")
